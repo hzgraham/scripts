@@ -12,7 +12,7 @@ cd /movies/
 md5sum /costamovies/$each >> /movies/md5check.txt
 md5sum --check md5check_incoming.txt
 
-cp /tmp/md5sum/$each /movies
+cp /costamovies/$each /movies
 
 md5sum /movies/$each >> /movies/md5checkreceiving.txt
 md5sum --check md5checkreceiving.txt
