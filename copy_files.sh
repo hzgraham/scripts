@@ -1,6 +1,6 @@
 #!/bin/bash
 #script to copy movies
-
+IFS=$'\n'
 read -p "Are files BluRay (yes or no): " bluray
 echo $bluray
 for each in `cat ~/files.to.copy`
