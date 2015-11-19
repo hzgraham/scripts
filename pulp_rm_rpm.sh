@@ -7,7 +7,7 @@ function usage {
 }
 
 function parse {
-    while getopts "h?vp:r:f:" opt; do
+    while getopts "h?vp:r:f:s:" opt; do
         case "$opt" in
             p)
                 PHASE=$OPTARG
@@ -18,7 +18,7 @@ function parse {
             f)
                 FNAME=$OPTARG
                 ;;
-	    h)
+	    s)
 		HOST=$OPTARG
 		;;
             v)
@@ -30,7 +30,7 @@ function parse {
                 ;;
         esac
     done
-
+    printf "Host: ${HOST} REPO: $REPO FNAME: $FNAME PHASE: $PHASE \n"
     if [ -z "$PHASE" -o -z "$REPO" -o -z "$FNAME" -o -z "$HOST" ]; then
         printf -- "-p -r -f and -h are all mandatory\n\n" 1>&2
         usage
@@ -83,7 +83,7 @@ function ssh_cmd {
         printf "ssh ${HOST} ${CMD}\n\n\n" 1>&2
     fi
     printf "ssh ${HOST} ${CMD}\n\n\n" 
-    ssh pulp-gca03.util.phx1.redhat.com ${CMD}
+    ssh ${HOST} ${CMD}
 }
 
 # don't forget to pass in all the arguments!
