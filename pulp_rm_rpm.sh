@@ -64,7 +64,7 @@ function mongo_rm {
     ID=$1
     REPO=$2
     PHASE=$3
-
+    printf "These are the IDs for ${FNAME}: ${ID} \n"
     if [ ! -z "$VERBOSE" ]; then
         printf "mongo pulp_database --quiet --eval 'db.repo_content_units.remove({'unit_id': '${ID}', 'repo_id':'${REPO}-${PHASE}'}, 1);'\n" 1>&2
     fi
